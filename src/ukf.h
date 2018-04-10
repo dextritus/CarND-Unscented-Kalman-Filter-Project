@@ -81,6 +81,7 @@ public:
 
   long long previous_timestamp_;
 
+  // measurement noise matrices
   MatrixXd R_lidar;
   MatrixXd R_radar;
 
