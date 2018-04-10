@@ -31,7 +31,7 @@ UKF::UKF() {
   P_(4, 4) = M_PI * M_PI/4;
 
   // Process noise standard deviation longitudinal acceleration in m/s^2
-  std_a_ = 1;
+  std_a_ = 2;
 
   // Process noise standard deviation yaw acceleration in rad/s^2
   std_yawdd_ = M_PI/4;
