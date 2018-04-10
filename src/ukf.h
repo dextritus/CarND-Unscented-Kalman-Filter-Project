@@ -25,6 +25,9 @@ public:
   ///* state vector: [pos1 pos2 vel_abs yaw_angle yaw_rate] in SI units and rad
   VectorXd x_;
 
+  // state error matrix
+  MatrixXd x_diff;
+
   ///* state covariance matrix
   MatrixXd P_;
 
@@ -55,6 +58,15 @@ public:
   ///* Radar measurement noise standard deviation radius change in m/s
   double std_radrd_ ;
 
+  ///* innovation
+  VectorXd innov;
+
+  ///* measurement covariance matrix
+  MatrixXd S;
+
+  //state - measurement cross - correlation matrix
+  MatrixXd Tc;
+
   ///* Weights of sigma points
   VectorXd weights_;
 
@@ -67,6 +79,10 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+  long long previous_timestamp_;
+
+  MatrixXd R_lidar;
+  MatrixXd R_radar;
 
   /**
    * Constructor
@@ -102,6 +118,12 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  /**
+   * Final update of the UKF. Calculates the Kalman gain, updates the state and covariance 
+   * matrix
+   */
+  void UpdateAll();
 };
 
 #endif /* UKF_H */
