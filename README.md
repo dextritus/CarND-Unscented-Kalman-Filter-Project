@@ -9,7 +9,7 @@ In this project, I:
 
 * implemented the time update function `Update` in which the motion model predicts the sigma points and the resulting state and covariance matrix
 * implemented the `UpdateLidar` and `UpdateRadar` methods in which the measurement models for each instrument were used to project the sigma points in the measurements space and calculate the predicted measurement and the covariance matrix.
-* implmemented the `UpdateAll` method in which the cross-correlation between the state and the measurements sigma points is used to calculate the Kalman gain, which ultimately is used to calculate the final state mean and covariance update. In this same method, the NIS value is also calculated in order to check if the filter over or understimates the uncertainty of the measurements. 
+* implemented the `UpdateAll` method in which the cross-correlation between the state and the measurements sigma points is used to calculate the Kalman gain, which ultimately is used to calculate the final state mean and covariance update. In this same method, the Normalized Innovation Squared value is also calculated in order to check if the filter over or understimates the uncertainty of the measurements. 
 * an important factor in tuning the filter was the initial state covariance matrix.
 
 The RMSE for Dataset1 obtained with these settings is [0.07, 0.08, 0.31, 0.23]'.
